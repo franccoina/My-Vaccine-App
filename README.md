@@ -1,6 +1,14 @@
-# my_vaccine_app
+# My Vaccine App
 
-A new Flutter project.
+Hi there! Welcome to the repository for My Vaccine Flutter project. This is my 'academic information'.
+
+- __Student:__ David Francisco Blandón Mena
+- __College:__ Instituto Tecnológico Metropolitano
+- __Program:__ Tecnología en Desarrollo de Aplicaciones para Dispositivos Móviles
+- __Subjects:__ 650202015-1 OPTATIVA I-VIRTUAL 2025-2
+- __Activities:__ 
+
+  - Taller My Vaccine - Taller 25%
 
 ## Getting Started
 
