@@ -5,11 +5,8 @@ import 'package:flutter/widgets.dart';
 import 'package:my_vaccine_app/config/constants/environment.dart';
 import 'package:my_vaccine_app/features/auth/domain/datasources/auth_datasource.dart';
 import 'package:my_vaccine_app/features/auth/domain/entities/register_user_request/register_user_request.dart';
-import 'package:my_vaccine_app/features/auth/domain/entities/user.dart';
 import 'package:my_vaccine_app/features/auth/domain/entities/user_info/user_info.dart';
 import 'package:my_vaccine_app/features/auth/infrastructure/errors/auth_errors.dart';
-import 'package:my_vaccine_app/features/auth/infrastructure/mappers/user_mapper.dart';
-import 'package:my_vaccine_app/features/shared/infrastructure/services/key_value_storage_service.dart';
 
 
 class AuthDataSourceImpl extends AuthDataSource {
@@ -51,7 +48,7 @@ class AuthDataSourceImpl extends AuthDataSource {
 
   @override
   Future register(RegisterUserRequest registerUserRequest) async {
-    final url = '/api/Auth/register';
+    const url = '/api/Auth/register';
     try {
       final response = await dio.post(
         url,
@@ -65,7 +62,7 @@ class AuthDataSourceImpl extends AuthDataSource {
       );
 
       
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       throw Exception('Failed to register user: ${e.response?.data ?? e.message}');
     }
   }
@@ -124,8 +121,6 @@ class AuthDataSourceImpl extends AuthDataSource {
   @override
    Future<Image?> getUserPhotoProfile(String token) async {
     try {
-      if (token == null) throw Exception("Token is null");
-
       final response = await dio.get('/api/auth/get-user-photo-profile',
         options: Options(
           headers: {'Authorization': 'Bearer $token'},

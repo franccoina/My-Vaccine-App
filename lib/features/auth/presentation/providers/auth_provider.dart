@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_vaccine_app/features/auth/domain/entities/register_user_request/register_user_request.dart';
-import 'package:my_vaccine_app/features/auth/domain/entities/user.dart';
 import 'package:my_vaccine_app/features/auth/domain/entities/user_info/user_info.dart';
 import 'package:my_vaccine_app/features/auth/domain/repositories/auth_repository.dart';
 import 'package:my_vaccine_app/features/auth/infrastructure/errors/auth_errors.dart';
@@ -35,7 +34,7 @@ class AuthNotifier extends StateNotifier<AuthState> {
       response = await authRepository.login(email, password);
 
       if (response.user != null) {
-        _setLoggedUser(response?.user ?? UserInfo());
+        _setLoggedUser(response.user ?? UserInfo());
       }
       // final userPhotoProfile = await authRepository.getUserPhotoProfile(response.user?.token??'' );
       _setuserProfilePhoto(response.user ?? UserInfo(), response.photo);

@@ -10,7 +10,7 @@ class Slug extends FormzInput<String, SlugError> {
   const Slug.pure() : super.pure('');
 
   // Call super.dirty to represent a modified form input.
-  const Slug.dirty( String value ) : super.dirty(value);
+  const Slug.dirty( super.value ) : super.dirty();
 
 
 

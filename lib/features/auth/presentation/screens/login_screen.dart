@@ -87,7 +87,7 @@ class _LoginForm extends ConsumerWidget {
 
     
     ref.listen(authProvider, (previous, next) {
-      if(next?.authStatus == AuthStatus.authenticated) {
+      if(next.authStatus == AuthStatus.authenticated) {
         context.pushReplacement('/home');
       }
       if ( next.errorMessage.isEmpty ) return;

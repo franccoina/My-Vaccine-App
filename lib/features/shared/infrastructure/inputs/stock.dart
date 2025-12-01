@@ -11,7 +11,7 @@ class Stock extends FormzInput<int, StockError> {
   const Stock.pure() : super.pure(0);
 
   // Call super.dirty to represent a modified form input.
-  const Stock.dirty( int value ) : super.dirty(value);
+  const Stock.dirty( super.value ) : super.dirty();
 
 
   String? get errorMessage {

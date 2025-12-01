@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:formz/formz.dart';
-import 'package:my_vaccine_app/features/auth/domain/entities/user.dart';
 import 'package:my_vaccine_app/features/auth/domain/entities/user_info/user_info.dart';
 import 'package:my_vaccine_app/features/auth/presentation/providers/auth_provider.dart';
 import 'package:my_vaccine_app/features/shared/infrastructure/inputs/email.dart';
@@ -29,7 +28,7 @@ class LoginFormNotifier extends StateNotifier<LoginFormState> {
     required this.loginUserCallback,
   }): super( LoginFormState() );
   
-  onEmailChange( String value ) {
+  void onEmailChange( String value ) {
     final newEmail = Email.dirty(value);
     state = state.copyWith(
       email: newEmail,
@@ -37,7 +36,7 @@ class LoginFormNotifier extends StateNotifier<LoginFormState> {
     );
   }
 
-  onPasswordChanged( String value ) {
+  void onPasswordChanged( String value ) {
     final newPassword = Password.dirty(value);
     state = state.copyWith(
       password: newPassword,
@@ -45,7 +44,7 @@ class LoginFormNotifier extends StateNotifier<LoginFormState> {
     );
   }
 
-  onFormSubmit() async {
+  Future<void> onFormSubmit() async {
     _touchEveryField();
 
     if ( !state.isValid ) return;
@@ -57,7 +56,7 @@ class LoginFormNotifier extends StateNotifier<LoginFormState> {
     state = state.copyWith(isPosting: false, user: userResponse.user, userPhoto: userResponse.photo );
   }
 
-  _touchEveryField() {
+  void _touchEveryField() {
 
     final email    = Email.dirty(state.email.value);
     final password = Password.dirty(state.password.value);

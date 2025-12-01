@@ -5,7 +5,7 @@ import 'package:my_vaccine_app/features/auth/presentation/providers/auth_provide
 import 'package:my_vaccine_app/features/shared/widgets/side_menu.dart';
 
 class HomeScreen extends ConsumerWidget {
-  HomeScreen({Key? key}) : super(key: key);
+  HomeScreen({super.key});
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override

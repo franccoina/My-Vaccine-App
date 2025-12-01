@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -49,15 +48,13 @@ class SideMenuState extends ConsumerState<SideMenu> {
           children: [
             CircleAvatar(
               radius: 100,
-             backgroundImage: profileImage != null
-                  ? profileImage as ImageProvider
-                  : AssetImage('assets/images/no-image.jpg') as ImageProvider,
+             backgroundImage: profileImage ?? const AssetImage('assets/images/no-image.jpg') as ImageProvider,
             ),
             Positioned(
               bottom: 0,
               right: 0,
               child: IconButton(
-                icon: Icon(Icons.edit),
+                icon: const Icon(Icons.edit),
                 onPressed: () async {
                   await _showImageSourceActionSheet(context);
                   await ref.read(userImageProvider.notifier).uploadImage(authState.token ?? '');
@@ -120,13 +117,13 @@ class SideMenuState extends ConsumerState<SideMenu> {
           mainAxisSize: MainAxisSize.min,
           children: [
             ListTile(
-              leading: Icon(Icons.camera),
-              title: Text('Cámara'),
+              leading: const Icon(Icons.camera),
+              title: const Text('Cámara'),
               onTap: () => Navigator.of(context).pop(ImageSource.camera),
             ),
             ListTile(
-              leading: Icon(Icons.photo_album),
-              title: Text('Galería'),
+              leading: const Icon(Icons.photo_album),
+              title: const Text('Galería'),
               onTap: () => Navigator.of(context).pop(ImageSource.gallery),
             ),
           ],
